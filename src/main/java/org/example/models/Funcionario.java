@@ -1,16 +1,33 @@
 package org.example.models;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Funcionario extends Pessoa{
+@Entity
+@Table(name = "funcionarios")
+public class Funcionario extends Pessoa {
 
+    @Column(name = "salario")
     private BigDecimal salario;
+
+    @Column(name = "funcao")
     private String funcao;
 
-    public Funcionario(String nome, LocalDate dataNascimento, BigDecimal salario, String funcao){
-        super(nome,dataNascimento);
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    public Funcionario() {
+
+    }
+
+    public Funcionario(String nome, LocalDate dataNascimento, BigDecimal salario, String funcao, int id) {
+        super(nome, dataNascimento);
         this.salario = salario;
         this.funcao = funcao;
+        this.id = id;
     }
+
+    // Getters e Setters
 }

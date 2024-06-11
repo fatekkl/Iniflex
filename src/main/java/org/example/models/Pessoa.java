@@ -1,17 +1,25 @@
 package org.example.models;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@MappedSuperclass
 public class Pessoa {
-    private final String nome;
-    private final LocalDate dataNascimento;
 
-    public Pessoa(String nome, LocalDate dataNascimento){
+    @Column(name = "nome")
+    private String nome;
+
+    @Column(name = "data_nascimento")
+    private LocalDate dataNascimento;
+
+    // Construtor padrão
+    public Pessoa() {
+    }
+
+    public Pessoa(String nome, LocalDate dataNascimento) {
         this.nome = nome;
         this.dataNascimento = dataNascimento;
     }
 
-    public String getNome() {
-        return nome;
-    }
+
 }
