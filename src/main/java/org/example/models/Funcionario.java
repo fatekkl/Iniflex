@@ -22,11 +22,10 @@ public class Funcionario extends Pessoa {
 
     }
 
-    public Funcionario(String nome, LocalDate dataNascimento, BigDecimal salario, String funcao, int id) {
+    public Funcionario(String nome, LocalDate dataNascimento, BigDecimal salario, String funcao) {
         super(nome, dataNascimento);
         this.salario = salario;
         this.funcao = funcao;
-        this.id = id;
     }
 
     // Getters e Setters
