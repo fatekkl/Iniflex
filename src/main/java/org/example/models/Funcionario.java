@@ -26,7 +26,18 @@ public class Funcionario extends Pessoa {
         super(nome, dataNascimento);
         this.salario = salario;
         this.funcao = funcao;
+
     }
 
-    // Getters e Setters
+
+    public String toString() {
+        return "Funcionario{" +
+                "id=" + id +
+                ", nome='" + getNome() + '\'' +
+                ", dataNascimento=" + getDataNascimento() +
+                ", salario=" + salario +
+                ", funcao='" + funcao + '\'' +
+                '}';
+    }
+
 }
