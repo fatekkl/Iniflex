@@ -17,17 +17,30 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="e97582b5-53ca-4bd0-9af9-8d8ffe59f6fe">
-      <console name="Connection" type="STANDARD" schema="" session="Main"><![CDATA[CREATE DATABASE protherainiflex;]]></console>
+      <console name="Connection" type="STANDARD" schema="protherainiflex" session="Main"><![CDATA[CREATE TABLE funcionarios (
+    id INT NOT NULL AUTO_INCREMENT,
+    data_nascimento DATE,
+    nome VARCHAR(255),
+    funcao VARCHAR(255),
+    salario DECIMAL(19,2),
+    PRIMARY KEY (id)
+) ENGINE=MyISAM;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files />
+    <open-files>
+      <object connection-id="e97582b5-53ca-4bd0-9af9-8d8ffe59f6fe" object-ref="consoles/Connection" />
+      <object connection-id="e97582b5-53ca-4bd0-9af9-8d8ffe59f6fe" object-ref="schemas/protherainiflex/tables/funcionarios" />
+    </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
     <connection id="e97582b5-53ca-4bd0-9af9-8d8ffe59f6fe" />
+  </component>
+  <component name="DBNavigator.Project.DatasetFilterManager">
+    <filter-actions connection-id="e97582b5-53ca-4bd0-9af9-8d8ffe59f6fe" dataset="protherainiflex.funcionarios" active-filter-id="EMPTY_FILTER" />
   </component>
   <component name="DBNavigator.Project.ExecutionManager">
     <retain-sticky-names value="false" />
