@@ -2,11 +2,8 @@ package org.example;
 
 import org.example.models.Funcionario;
 import org.example.models.Pessoa;
-
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-import java.math.BigDecimal;
-import java.time.LocalDate;
 
 
 public class Principal {
