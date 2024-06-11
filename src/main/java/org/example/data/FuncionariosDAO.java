@@ -18,7 +18,21 @@ public class FuncionariosDAO{
             transaction.commit();
             session.close();
 
-            System.out.println("rodou");
+            System.out.println("Funcionário adicionado a tabela!");
+        } finally {
+//            sessionFactory.close();
+        }
+    }
+
+    public void remover(Funcionario funcionario, SessionFactory sessionFactory) {
+        try {
+            Session session = sessionFactory.openSession();
+            Transaction transaction = session.beginTransaction();
+            session.delete(funcionario);
+            transaction.commit();
+            session.close();
+
+            System.out.println("Funcionário removido da tabela!");
         } finally {
             sessionFactory.close();
         }
