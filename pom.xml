@@ -20,6 +20,12 @@
             <artifactId>hibernate-core</artifactId>
             <version>5.6.4.Final</version>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version> <!-- Substitua a versão pela versão atual do conector MySQL -->
+        </dependency>
+
     </dependencies>
 
 
