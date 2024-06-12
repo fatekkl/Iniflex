@@ -6,7 +6,7 @@
   </component>
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DatabaseBrowserManager">
@@ -17,14 +17,14 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="e97582b5-53ca-4bd0-9af9-8d8ffe59f6fe">
-      <console name="Connection" type="STANDARD" schema="protherainiflex" session="Main"><![CDATA[CREATE TABLE funcionarios (
+      <console name="Connection" type="STANDARD" schema="protherainiflex" session="Main"><![CDATA[CREATE TABLE funcionarios(
     id INT NOT NULL AUTO_INCREMENT,
     data_nascimento DATE,
     nome VARCHAR(255),
     funcao VARCHAR(255),
     salario DECIMAL(19,2),
     PRIMARY KEY (id)
-) ENGINE=MyISAM;]]></console>
+)ENGINE=MyISAM;]]></console>
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -32,7 +32,6 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="e97582b5-53ca-4bd0-9af9-8d8ffe59f6fe" object-ref="consoles/Connection" />
       <object connection-id="e97582b5-53ca-4bd0-9af9-8d8ffe59f6fe" object-ref="schemas/protherainiflex/tables/funcionarios" />
     </open-files>
   </component>
