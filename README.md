@@ -32,5 +32,5 @@ inserir,ler,atualizar e deletar dados da tabela, utilizei a biblioteca Hibernate
 
 Em suma, achei um desafio interessante que me fez interagir mais de perto com Java e tive pequenos empecilhos na
 configuração do Hibernate, interagir com os BigDecimals foi mais fácil do que imaginei pois eram operações básicas como
-adição e divisão. Acredito que consegui resolver todas as atividades solicitadas e aprendi bastante em pouco tempo, tenho muito interesse nessa vaga e gostei muito desse pequeno projeto, Obrigado pela oportunidade!
+adição e divisão. Acredito que consegui resolver todas as atividades solicitadas e aprendi bastante em pouco tempo, tenho muito interesse nessa vaga e gostei muito desse pequeno projeto, caso queiram rodar localmente, não esqueçam de criar uma tabela SQL com o nome funcionarios e consultar se está tudo certo, Obrigado pela oportunidade!
 
