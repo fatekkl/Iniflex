@@ -165,4 +165,27 @@ public class FuncionariosDAO {
 
         return null;
     }
+
+    public String getFuncionariosAlfabetica() {
+        try (Session session = sessionFactory.openSession()) {
+            Query query = session.createQuery(
+                    "FROM Funcionario f ORDER BY f.nome ASC",
+                    Funcionario.class
+            );
+            return query.getResultList().toString();
+        }
+    }
+
+    public BigDecimal getSalarioTotal() {
+        try (Session session = sessionFactory.openSession()) {
+            org.hibernate.query.Query<?> query;
+            query = session.createQuery(
+                    "SELECT SUM(f.salario) FROM Funcionario f",
+                    BigDecimal.class
+            );
+            BigDecimal somaSalarios = (BigDecimal) query.uniqueResult();
+            return somaSalarios;
+        }
+
+    }
 }

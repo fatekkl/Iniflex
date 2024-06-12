@@ -2,6 +2,7 @@ package org.example.models;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.Period;
 
@@ -57,6 +58,13 @@ public class Funcionario extends Pessoa {
 
     public int getIdade() {
         return Period.between( getDataNascimento(),  LocalDate.now()).getYears();
+    }
+
+    public BigDecimal getSalariosMinimos() {
+        BigDecimal salarioMinimo = BigDecimal.valueOf(1212);
+        BigDecimal salariosMinimos = getSalario().divide(salarioMinimo, 2, RoundingMode.HALF_EVEN);
+
+        return salariosMinimos;
     }
 
 }

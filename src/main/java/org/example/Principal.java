@@ -63,6 +63,10 @@ public class Principal {
 //
 //        funcionariosDAO.remover( joao.getId() );
 
+            /* CAPTURA TODOS OS FUNCIONARIOS NA ORDEM DE INSERÇÃO */
+
+//         String funcionarios = funcionariosDAO.getFuncionarios();
+
         /* ATUALIZA O SALARIO DE CADA FUNCIONARIO EM MAIS 10% */
 
 //        BigDecimal salarioAtualizado_maria = salario_maria.add( maria.getPorcentagem( 0.10 ) );
@@ -85,15 +89,30 @@ public class Principal {
 //        funcionariosDAO.atualizarSalario( 9, salarioAtualizado_heloisa );
 //        funcionariosDAO.atualizarSalario( 10, salarioAtualizado_helena );
 
+        /* FAZ O MAP COM A LISTA DE FUNCIONARIOS OPERADORES */
 
-        List funcionarios = funcionariosDAO.getPorFuncao("Operador");
+        // Map<String, List> map = funcionariosDAO.toMap( funcionarios, "Operador" );
 
-        Map<String, List> map = funcionariosDAO.toMap( funcionarios, "Operador" );
+        /* CAPTURA POR FUNÇÃO
 
-        List<Funcionario> meses = funcionariosDAO.getPorMesesNascimento(10,12);
+        //List funcionarios = funcionariosDAO.getPorFuncao("Operador");
+
+        /* CAPTURA TODOS QUE NASCERAM NOS MESES 10 E 12
+
+        //List<Funcionario> meses = funcionariosDAO.getPorMesesNascimento( 10, 12 );
+
+        /* CAPTURA FUNCIONARIO MAIS VELHO */
+
+        //Map<String, Integer> funcionarioMaisVelho = funcionariosDAO.getMaisVelho();
 
 
-        System.out.println(funcionariosDAO.getMaisVelho());
+        /* CAPTURA OS FUNCIONARIOS POR ORDEM ALFABETICA */
+
+//       String funcionariosAlfabetica = funcionariosDAO.getFuncionariosAlfabetica();
+
+       //BigDecimal salarioTotal =  funcionariosDAO.getSalarioTotal();
+
+        System.out.println(miguel.getSalariosMinimos());
 
         sessionFactory.close();
 
