@@ -5,16 +5,25 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
-import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class FuncionariosDAO {
 
+    private final SessionFactory sessionFactory;
 
-    public String getFuncionarios(SessionFactory sessionFactory) {
+    public FuncionariosDAO(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
 
-        List<Funcionario> funcionarios = null;
+
+    public String getFuncionarios() {
+
+        List funcionarios = null;
 
         try {
             Session session = sessionFactory.openSession();
@@ -30,7 +39,7 @@ public class FuncionariosDAO {
         return funcionarios.toString();
     }
 
-    public void adicionar(Funcionario funcionario, SessionFactory sessionFactory) {
+    public void adicionar(Funcionario funcionario) {
         try {
             Session session = sessionFactory.openSession();
             Transaction transaction = session.beginTransaction();
@@ -46,7 +55,7 @@ public class FuncionariosDAO {
         }
     }
 
-    public void remover(int id, SessionFactory sessionFactory) {
+    public void remover(int id) {
 
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
@@ -56,6 +65,7 @@ public class FuncionariosDAO {
             int result = query.executeUpdate();
 
             transaction.commit();
+            session.close();
             if (result > 0) {
                 System.out.println( "Funcionário removido" );
             } else {
@@ -64,17 +74,16 @@ public class FuncionariosDAO {
         }
     }
 
-    public void removerPorNome(String nome, SessionFactory sessionFactory) {
+    public void atualizarSalario(int id, BigDecimal novoSalario) {
         try (Session session = sessionFactory.openSession()) {
             Transaction transaction = session.beginTransaction();
-
-            Query query = session.createQuery( "delete from Funcionario where nome = :nome" );
-            query.setParameter( "nome", nome );
+            Query query = session.createQuery( "update Funcionario set salario = :novoSalario where id = :id" );
+            query.setParameter( "novoSalario", novoSalario );
+            query.setParameter( "id", id );
             int result = query.executeUpdate();
-
             transaction.commit();
             if (result > 0) {
-                System.out.println( "Funcionário removido" );
+                System.out.println( "Salário atualizado" );
             } else {
                 System.out.println( "Nenhum funcionário encontrado com o ID fornecido" );
             }
@@ -82,4 +91,25 @@ public class FuncionariosDAO {
     }
 
 
+    public List<Funcionario> getPorFuncao(String funcao) {
+        try (Session session = sessionFactory.openSession()) {
+            Query query = session.createQuery(
+                    "FROM Funcionario WHERE funcao = :funcao", Funcionario.class);
+
+            query.setParameter("funcao", funcao);
+
+
+            return query.getResultList();
+        }
+    }
+
+    public Map<String, List> toMap(List lista, String funcao) {
+        try(Session session = sessionFactory.openSession()) {
+            Map<String, List> map = new HashMap<>();
+
+            map.put(funcao, lista);
+
+            return map;
+        }
+    }
 }
