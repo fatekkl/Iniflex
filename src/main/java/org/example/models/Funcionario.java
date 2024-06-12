@@ -3,6 +3,7 @@ package org.example.models;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 @Table(name = "funcionarios")
@@ -52,6 +53,10 @@ public class Funcionario extends Pessoa {
         BigDecimal salarioAtual = getSalario();
 
         return salarioAtual.multiply( BigDecimal.valueOf( value ) );
+    }
+
+    public int getIdade() {
+        return Period.between( getDataNascimento(),  LocalDate.now()).getYears();
     }
 
 }

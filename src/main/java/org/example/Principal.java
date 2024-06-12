@@ -90,8 +90,10 @@ public class Principal {
 
         Map<String, List> map = funcionariosDAO.toMap( funcionarios, "Operador" );
 
+        List<Funcionario> meses = funcionariosDAO.getPorMesesNascimento(10,12);
 
-        System.out.println(map);
+
+        System.out.println(funcionariosDAO.getMaisVelho());
 
         sessionFactory.close();
 

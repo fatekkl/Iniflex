@@ -20,7 +20,7 @@ public class Pessoa {
         return nome;
     }
 
-    public LocalDate getDataNascimento() {
+    protected LocalDate getDataNascimento() {
         return dataNascimento;
     }
 

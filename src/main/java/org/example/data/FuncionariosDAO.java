@@ -7,10 +7,7 @@ import org.hibernate.Transaction;
 
 import javax.persistence.Query;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FuncionariosDAO {
 
@@ -32,8 +29,8 @@ public class FuncionariosDAO {
 
             funcionarios = query.getResultList();
 
-        } finally {
-            sessionFactory.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         return funcionarios.toString();
@@ -71,6 +68,8 @@ public class FuncionariosDAO {
             } else {
                 System.out.println( "Nenhum funcionário encontrado com o ID fornecido" );
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -82,11 +81,15 @@ public class FuncionariosDAO {
             query.setParameter( "id", id );
             int result = query.executeUpdate();
             transaction.commit();
+
+            session.close();
             if (result > 0) {
                 System.out.println( "Salário atualizado" );
             } else {
                 System.out.println( "Nenhum funcionário encontrado com o ID fornecido" );
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
@@ -94,22 +97,72 @@ public class FuncionariosDAO {
     public List<Funcionario> getPorFuncao(String funcao) {
         try (Session session = sessionFactory.openSession()) {
             Query query = session.createQuery(
-                    "FROM Funcionario WHERE funcao = :funcao", Funcionario.class);
+                    "FROM Funcionario WHERE funcao = :funcao", Funcionario.class );
 
-            query.setParameter("funcao", funcao);
-
+            query.setParameter( "funcao", funcao );
 
             return query.getResultList();
         }
     }
 
     public Map<String, List> toMap(List lista, String funcao) {
-        try(Session session = sessionFactory.openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             Map<String, List> map = new HashMap<>();
 
-            map.put(funcao, lista);
+            map.put( funcao, lista );
+
+            session.close();
+            return map;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public List<Funcionario> getPorMesesNascimento(int mes1, int mes2) {
+
+        try ( Session session = sessionFactory.openSession();) {
+            Query query = session.createQuery(
+                    "FROM Funcionario WHERE MONTH(dataNascimento) IN (:mes1, :mes2)",
+                    Funcionario.class
+            );
+
+            query.setParameter( "mes1", mes1 );
+            query.setParameter( "mes2", mes2 );
+
+
+            return query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+    public Map<String, Integer> getMaisVelho() {
+
+        try (Session session = sessionFactory.openSession();) {
+            Query query = session.createQuery(
+                    "FROM Funcionario ORDER BY dataNascimento ASC",
+                    Funcionario.class
+            );
+
+            query.setMaxResults( 1 );
+
+            List<Funcionario> funcionarios = query.getResultList();
+
+            Funcionario funcionario = funcionarios.get( 0 );
+
+            Map<String, Integer> map = new HashMap<>();
+
+            map.put( funcionario.getNome(), funcionario.getIdade());
 
             return map;
+        } catch (Exception e){
+            e.printStackTrace();
         }
+
+        return null;
     }
 }
