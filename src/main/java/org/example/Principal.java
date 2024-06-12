@@ -41,6 +41,7 @@ public class Principal {
         Funcionario heloisa = new Funcionario( "Heloisa", LocalDate.of( 2003, 5, 24 ), salario_heloisa, "Eletricista" );
         Funcionario helena = new Funcionario( "Helena", LocalDate.of( 1996, 9, 2 ), salario_helena, "Gerente" );
 
+        Funcionario[] funcionariosArray = {maria, joao, caio, miguel, alice, heitor, arthur, laura, heloisa, helena};
 
         SessionFactory sessionFactory = Banco.getSessionFactory();
 
@@ -49,17 +50,10 @@ public class Principal {
 
         /* ADICIONA TODOS OS FUNCIONARIOS NA LISTA */
 
-        funcionariosDAO.adicionar( maria );
-        funcionariosDAO.adicionar( joao );
-        funcionariosDAO.adicionar( caio );
-        funcionariosDAO.adicionar( miguel );
-        funcionariosDAO.adicionar( alice );
-        funcionariosDAO.adicionar( heitor );
-        funcionariosDAO.adicionar( arthur );
-        funcionariosDAO.adicionar( laura );
-        funcionariosDAO.adicionar( heloisa );
-        funcionariosDAO.adicionar( helena );
 
+        for (Funcionario funcionarioAtual : funcionariosArray) {
+            funcionariosDAO.adicionar( funcionarioAtual );
+        }
 
         funcionariosDAO.remover( joao.getId() );
 
@@ -69,7 +63,8 @@ public class Principal {
 
         /* ATUALIZA O SALARIO DE CADA FUNCIONARIO EM MAIS 10% */
 
-        BigDecimal salarioAtualizado_maria = salario_maria.add( maria.getPorcentagem( 0.10 ) );
+
+        BigDecimal salarioAtualizado_maria = salario_maria.add(maria.getPorcentagem( 0.10 ));
         BigDecimal salarioAtualizado_caio = salario_caio.add( caio.getPorcentagem( 0.10 ) );
         BigDecimal salarioAtualizado_miguel = salario_miguel.add( miguel.getPorcentagem( 0.10 ) );
         BigDecimal salarioAtualizado_alice = salario_alice.add( alice.getPorcentagem( 0.10 ) );
@@ -78,6 +73,7 @@ public class Principal {
         BigDecimal salarioAtualizado_laura = salario_laura.add( laura.getPorcentagem( 0.10 ) );
         BigDecimal salarioAtualizado_heloisa = salario_heloisa.add( heloisa.getPorcentagem( 0.10 ) );
         BigDecimal salarioAtualizado_helena = salario_helena.add( helena.getPorcentagem( 0.10 ) );
+
 
         funcionariosDAO.atualizarSalario( 1, salarioAtualizado_maria );
         funcionariosDAO.atualizarSalario( 3, salarioAtualizado_caio );
@@ -93,7 +89,7 @@ public class Principal {
 
         List funcionariosPorFuncao = funcionariosDAO.getPorFuncao( "Operador" );
 
-        Map<String, List> map = funcionariosDAO.toMap( funcionarios, "Operador" );
+        Map<String, List> map = funcionariosDAO.toMap( funcionariosPorFuncao, "Operador" );
 
         /* CAPTURA POR FUNÇÃO */
 
@@ -114,7 +110,7 @@ public class Principal {
 
         BigDecimal salarioTotal = funcionariosDAO.getSalarioTotal();
 
-        BigDecimal salariosMinimos =  miguel.getSalariosMinimos();
+        BigDecimal salariosMinimos = miguel.getSalariosMinimos();
 
         sessionFactory.close();
 

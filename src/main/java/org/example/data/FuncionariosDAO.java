@@ -20,20 +20,17 @@ public class FuncionariosDAO {
 
     public List getFuncionarios() {
 
-        List funcionarios = null;
-
         try {
             Session session = sessionFactory.openSession();
 
             Query query = session.createQuery( "FROM Funcionario", Funcionario.class );
 
-            funcionarios = query.getResultList();
-
+            return query.getResultList();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return funcionarios;
+        return null;
     }
 
     public void adicionar(Funcionario funcionario) {
@@ -45,8 +42,6 @@ public class FuncionariosDAO {
 
             transaction.commit();
             session.close();
-
-            System.out.println( "Funcionário adicionado a tabela!" );
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -59,15 +54,10 @@ public class FuncionariosDAO {
 
             Query query = session.createQuery( "delete from Funcionario where id = :id" );
             query.setParameter( "id", id );
-            int result = query.executeUpdate();
+            query.executeUpdate();
 
             transaction.commit();
             session.close();
-            if (result > 0) {
-                System.out.println( "Funcionário removido" );
-            } else {
-                System.out.println( "Nenhum funcionário encontrado com o ID fornecido" );
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -107,7 +97,7 @@ public class FuncionariosDAO {
 
     public Map<String, List> toMap(List lista, String funcao) {
         try (Session session = sessionFactory.openSession()) {
-            Map<String, List> map = new HashMap<>();
+            HashMap<String, List> map = new HashMap<>();
 
             map.put( funcao, lista );
 
@@ -122,7 +112,7 @@ public class FuncionariosDAO {
 
     public List<Funcionario> getPorMesesNascimento(int mes1, int mes2) {
 
-        try ( Session session = sessionFactory.openSession();) {
+        try (Session session = sessionFactory.openSession()) {
             Query query = session.createQuery(
                     "FROM Funcionario WHERE MONTH(dataNascimento) IN (:mes1, :mes2)",
                     Funcionario.class
@@ -156,10 +146,10 @@ public class FuncionariosDAO {
 
             Map<String, Integer> map = new HashMap<>();
 
-            map.put( funcionario.getNome(), funcionario.getIdade());
+            map.put( funcionario.getNome(), funcionario.getIdade() );
 
             return map;
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

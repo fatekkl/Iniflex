@@ -18,7 +18,7 @@ public class Funcionario extends Pessoa {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public int id;
+    private int id;
 
     public Funcionario() {
 
