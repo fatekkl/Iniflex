@@ -18,7 +18,7 @@ public class FuncionariosDAO {
     }
 
 
-    public String getFuncionarios() {
+    public List getFuncionarios() {
 
         List funcionarios = null;
 
@@ -33,7 +33,7 @@ public class FuncionariosDAO {
             e.printStackTrace();
         }
 
-        return funcionarios.toString();
+        return funcionarios;
     }
 
     public void adicionar(Funcionario funcionario) {

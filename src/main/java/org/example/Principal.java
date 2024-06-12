@@ -49,70 +49,72 @@ public class Principal {
 
         /* ADICIONA TODOS OS FUNCIONARIOS NA LISTA */
 
-//        funcionariosDAO.adicionar( maria );
-//        funcionariosDAO.adicionar( joao );
-//        funcionariosDAO.adicionar( caio );
-//        funcionariosDAO.adicionar( miguel );
-//        funcionariosDAO.adicionar( alice );
-//        funcionariosDAO.adicionar( heitor );
-//        funcionariosDAO.adicionar( arthur );
-//        funcionariosDAO.adicionar( laura );
-//        funcionariosDAO.adicionar( heloisa );
-//        funcionariosDAO.adicionar( helena );
-//
-//
-//        funcionariosDAO.remover( joao.getId() );
+        funcionariosDAO.adicionar( maria );
+        funcionariosDAO.adicionar( joao );
+        funcionariosDAO.adicionar( caio );
+        funcionariosDAO.adicionar( miguel );
+        funcionariosDAO.adicionar( alice );
+        funcionariosDAO.adicionar( heitor );
+        funcionariosDAO.adicionar( arthur );
+        funcionariosDAO.adicionar( laura );
+        funcionariosDAO.adicionar( heloisa );
+        funcionariosDAO.adicionar( helena );
 
-            /* CAPTURA TODOS OS FUNCIONARIOS NA ORDEM DE INSERÇÃO */
 
-//         String funcionarios = funcionariosDAO.getFuncionarios();
+        funcionariosDAO.remover( joao.getId() );
+
+        /* CAPTURA TODOS OS FUNCIONARIOS NA ORDEM DE INSERÇÃO */
+
+        List funcionarios = funcionariosDAO.getFuncionarios();
 
         /* ATUALIZA O SALARIO DE CADA FUNCIONARIO EM MAIS 10% */
 
-//        BigDecimal salarioAtualizado_maria = salario_maria.add( maria.getPorcentagem( 0.10 ) );
-//        BigDecimal salarioAtualizado_caio = salario_caio.add( caio.getPorcentagem( 0.10 ) );
-//        BigDecimal salarioAtualizado_miguel = salario_miguel.add( miguel.getPorcentagem( 0.10 ) );
-//        BigDecimal salarioAtualizado_alice = salario_alice.add( alice.getPorcentagem( 0.10 ) );
-//        BigDecimal salarioAtualizado_heitor = salario_heitor.add( heitor.getPorcentagem( 0.10 ) );
-//        BigDecimal salarioAtualizado_arthur = salario_arthur.add( arthur.getPorcentagem( 0.10 ) );
-//        BigDecimal salarioAtualizado_laura = salario_laura.add( laura.getPorcentagem( 0.10 ) );
-//        BigDecimal salarioAtualizado_heloisa = salario_heloisa.add( heloisa.getPorcentagem( 0.10 ) );
-//        BigDecimal salarioAtualizado_helena = salario_helena.add( helena.getPorcentagem( 0.10 ) );
-//
-//        funcionariosDAO.atualizarSalario( 1, salarioAtualizado_maria );
-//        funcionariosDAO.atualizarSalario( 3, salarioAtualizado_caio );
-//        funcionariosDAO.atualizarSalario( 4, salarioAtualizado_miguel );
-//        funcionariosDAO.atualizarSalario( 5, salarioAtualizado_alice );
-//        funcionariosDAO.atualizarSalario( 6, salarioAtualizado_heitor );
-//        funcionariosDAO.atualizarSalario( 7, salarioAtualizado_arthur );
-//        funcionariosDAO.atualizarSalario( 8, salarioAtualizado_laura );
-//        funcionariosDAO.atualizarSalario( 9, salarioAtualizado_heloisa );
-//        funcionariosDAO.atualizarSalario( 10, salarioAtualizado_helena );
+        BigDecimal salarioAtualizado_maria = salario_maria.add( maria.getPorcentagem( 0.10 ) );
+        BigDecimal salarioAtualizado_caio = salario_caio.add( caio.getPorcentagem( 0.10 ) );
+        BigDecimal salarioAtualizado_miguel = salario_miguel.add( miguel.getPorcentagem( 0.10 ) );
+        BigDecimal salarioAtualizado_alice = salario_alice.add( alice.getPorcentagem( 0.10 ) );
+        BigDecimal salarioAtualizado_heitor = salario_heitor.add( heitor.getPorcentagem( 0.10 ) );
+        BigDecimal salarioAtualizado_arthur = salario_arthur.add( arthur.getPorcentagem( 0.10 ) );
+        BigDecimal salarioAtualizado_laura = salario_laura.add( laura.getPorcentagem( 0.10 ) );
+        BigDecimal salarioAtualizado_heloisa = salario_heloisa.add( heloisa.getPorcentagem( 0.10 ) );
+        BigDecimal salarioAtualizado_helena = salario_helena.add( helena.getPorcentagem( 0.10 ) );
+
+        funcionariosDAO.atualizarSalario( 1, salarioAtualizado_maria );
+        funcionariosDAO.atualizarSalario( 3, salarioAtualizado_caio );
+        funcionariosDAO.atualizarSalario( 4, salarioAtualizado_miguel );
+        funcionariosDAO.atualizarSalario( 5, salarioAtualizado_alice );
+        funcionariosDAO.atualizarSalario( 6, salarioAtualizado_heitor );
+        funcionariosDAO.atualizarSalario( 7, salarioAtualizado_arthur );
+        funcionariosDAO.atualizarSalario( 8, salarioAtualizado_laura );
+        funcionariosDAO.atualizarSalario( 9, salarioAtualizado_heloisa );
+        funcionariosDAO.atualizarSalario( 10, salarioAtualizado_helena );
 
         /* FAZ O MAP COM A LISTA DE FUNCIONARIOS OPERADORES */
 
-        // Map<String, List> map = funcionariosDAO.toMap( funcionarios, "Operador" );
+        List funcionariosPorFuncao = funcionariosDAO.getPorFuncao( "Operador" );
 
-        /* CAPTURA POR FUNÇÃO
+        Map<String, List> map = funcionariosDAO.toMap( funcionarios, "Operador" );
 
-        //List funcionarios = funcionariosDAO.getPorFuncao("Operador");
+        /* CAPTURA POR FUNÇÃO */
 
-        /* CAPTURA TODOS QUE NASCERAM NOS MESES 10 E 12
 
-        //List<Funcionario> meses = funcionariosDAO.getPorMesesNascimento( 10, 12 );
+
+        /* CAPTURA TODOS QUE NASCERAM NOS MESES 10 E 12 */
+
+        List<Funcionario> meses = funcionariosDAO.getPorMesesNascimento( 10, 12 );
 
         /* CAPTURA FUNCIONARIO MAIS VELHO */
 
-        //Map<String, Integer> funcionarioMaisVelho = funcionariosDAO.getMaisVelho();
+        Map<String, Integer> funcionarioMaisVelho = funcionariosDAO.getMaisVelho();
 
 
         /* CAPTURA OS FUNCIONARIOS POR ORDEM ALFABETICA */
 
-//       String funcionariosAlfabetica = funcionariosDAO.getFuncionariosAlfabetica();
+        String funcionariosAlfabetica = funcionariosDAO.getFuncionariosAlfabetica();
 
-       //BigDecimal salarioTotal =  funcionariosDAO.getSalarioTotal();
+        BigDecimal salarioTotal = funcionariosDAO.getSalarioTotal();
 
-        System.out.println(miguel.getSalariosMinimos());
+        BigDecimal salariosMinimos =  miguel.getSalariosMinimos();
 
         sessionFactory.close();
 

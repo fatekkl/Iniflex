@@ -33,6 +33,7 @@
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
       <object connection-id="e97582b5-53ca-4bd0-9af9-8d8ffe59f6fe" object-ref="schemas/protherainiflex/tables/funcionarios" />
+      <object connection-id="e97582b5-53ca-4bd0-9af9-8d8ffe59f6fe" object-ref="consoles/Connection" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
