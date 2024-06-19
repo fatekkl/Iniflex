@@ -2,7 +2,7 @@
 
 ## Como decidi a estrutura do projeto?
 
-Optei por uma estrutura mais simplória e clara por não querer me estender,
+Optei por uma estrutura mais simples e clara por querer manter isso visível para pessoas que não entendem código a fundo,
 por mais que isso fique meio "feio" no código.
 
 ## Sobre as classes e POO
